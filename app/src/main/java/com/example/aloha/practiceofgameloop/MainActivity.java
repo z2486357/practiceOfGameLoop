@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     int i=0;
+    int j=0;
     TextView textView;
     Handler handler=new Handler();
     Runnable runnable=new Runnable() {
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             i++;
             textView.setText(""+i);
-            handler.postDelayed(runnable,1000);
+            handler.postDelayed(runnable,500);
         }
     };
 
@@ -26,10 +27,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView=(TextView)findViewById(R.id.textView);
+        handler.post(runnable);
     }
 
     public void ButtonOnClick(View view) {
-        handler.post(runnable);
+        TextView textView2=(TextView)findViewById(R.id.textView2);
+        j++;
+        textView2.setText(""+j);
     }
 
     public void Button2OnClick(View view) {
